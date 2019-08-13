@@ -1,28 +1,47 @@
-#----To do:----
-# - 
-# - 
-# - 
+#---------Main objective:----------
+#  - Just do a simple demonstration that it will work to practice skills
+#  - no need to include GUI
+#  - Keep it simple for now!!!
 
+#--------------To do:-------------
+# 1) do research in OOB (object oriented programming) for python / read the articles - watch videos
+#      - read the articles / watch videos 
+# 2) look at similar projects online
+# 3) read to learn to connect to database: http://www.postgresqltutorial.com/postgresql-python/connect/
+
+topic =[]
 
 def SaveQuestion(question, answer):
-
-    topic = [[question,answer]]
     
-    response = topic
+    new = [question,answer]
+    topic.append(new)  # ERROR HERE: need to make it so that it keeps the data 
+    print(topic)
 
-    '''if question in topic and answer in topic:
-        response = "Your answer has been saved"
+    print("Would you like to add another question?")
+    response = input().strip()
+    SaveAnotherQuestion(response, topic)
+    
+def SaveAnotherQuestion(response, topic):
+    if response == 'y' or 'yes':
+        print("What question would you like to save?")
+        question = input().strip()
+        print("What is the answer for the question?")
+        answer = input().strip()
+
+        SaveQuestion(question, answer)
+    elif response == 'n' or 'no':
+        print(topic)
     else:
-        response = "Error. Unable to save question."'''
-    return response
+        print("Enter yes or no")
 
 
 if __name__ == '__main__':
+
     print("What question would you like to save?")
     question = input().strip()
+
     print("What is the answer for the question?")
     answer = input().strip()
 
-    saved = SaveQuestion(question, answer)
-    print(saved)
+    SaveQuestion(question, answer)
 
