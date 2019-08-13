@@ -14,7 +14,7 @@ topic =[]
 def SaveQuestion(question, answer):
     
     new = [question,answer]
-    topic.append(new)  # ERROR HERE: need to make it so that it keeps the data 
+    topic.append(new) 
     print(topic)
 
     print("Would you like to add another question?")
@@ -29,7 +29,8 @@ def SaveAnotherQuestion(response, topic):
         answer = input().strip()
 
         SaveQuestion(question, answer)
-    elif response == 'n' or 'no':
+
+    elif response == 'n' or 'no': # ERROR: Something is not working here
         print(topic)
     else:
         print("Enter yes or no")
