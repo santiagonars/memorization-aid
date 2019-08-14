@@ -46,8 +46,7 @@ def SaveAnotherQuestion(response, topic):
         print(topic)
     else:
         print("Enter yes or no")     
-        print("yes")
 
-        
+     
 if __name__ == '__main__':
     main()
