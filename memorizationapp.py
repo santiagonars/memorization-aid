@@ -1,37 +1,56 @@
 #-----------------------------NOTES:------------------------------------
 # - terminal shortcut: Documents/Github/memorization-app
+# - 
 #-----------------------MAINE OBJECTIVES:-------------------------------
 #  - Just do a simple demonstration that it will work to practice skills
-#  - no need to include GUI
+#  - no need to include GUI yet
 #  - Keep it simple for now!!!
 #-----------------------------TODO:-------------------------------------
-# 1) do research in OOB (object oriented programming)
-#     - read the articles / watch videos 
-# 2) look at similar projects online
-# 3) read to learn to connect to a database:
-#     - http://www.postgresqltutorial.com/postgresql-python/connect/
+# 1) look at similar projects to online to spark ideas - (DONE)
+# 2) Implement extracting questions & answeres from .txt file to use as a database - (DONE)
+# 3) Implement saving questions & answers in the .txt file
+# 4) Implement global variables functionality
 
-topic =[]
+cards =[]
 
 def main():
-    print("What question would you like to save?")
+    cards =[]
+    LoadFile(cards)
+
+    '''with open("topicname.txt", "r") as dfile:
+        #for line in iter(dfile.readline, ''):
+        for line in dfile:
+            temp = eval(line)
+            cards.append(temp)
+            print(cards)
+    '''        
+
+    '''print("What question would you like to save?")
     question = input().strip()
     print("What is the answer for the question?")
     answer = input().strip()
 
     SaveQuestion(question, answer)
+    '''
 
-
+def LoadFile(cards):
+    with open("topicname.txt", "r") as dfile:
+        #for line in iter(dfile.readline, ''):
+        for line in dfile:
+            temp = eval(line)
+            cards.append(temp)
+            print(cards) 
+'''
 def SaveQuestion(question, answer):
     
     new = [question,answer]
-    topic.append(new) 
-    print(topic)
+    cards.append(new) 
+    print(cards)
 
-    result = SaveAnotherQuestion(topic)
+    result = SaveAnotherQuestion(cards)
     print(result)
 
-def SaveAnotherQuestion(topic):
+def SaveAnotherQuestion(cards):
     print("Would you like to add another question?")
     response = input().strip()
     if (response == "yes" or "y"):
@@ -42,11 +61,11 @@ def SaveAnotherQuestion(topic):
 
         SaveQuestion(question, answer)
         
-    elif (response == "no" or "n"): # ERROR: not working for this case!!! 
-        return print(topic)
+    elif (response == "no" or "n"): #ERROR! not working
+        return print(cards)
     else:
         return print("Enter yes or no")     
-
+'''
      
 if __name__ == '__main__':
     main()
