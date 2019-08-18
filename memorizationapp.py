@@ -12,7 +12,8 @@
 # - Add menu functionality
 # - Add function to view questions & answers (transversing and random)
 # - Add timer to do perform practice sessions
-# - Add 
+# - Add option to delete a question&answer
+# - Add option to edit a question&answer
 # - Improve functionality to save another variable
 # - Improve global variables functionality
 # - Improve capability to write new data to .txt file
