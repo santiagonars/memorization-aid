@@ -5,13 +5,17 @@
 #  - Just do a simple demonstration that it will work to practice skills
 #  - no need to include GUI yet
 #  - Keep it simple for now!!!
-#---------------------------BACKLOG:------------------------------------
+#---------------------------BACKLOG:TODO:------------------------------_
 # - look at similar projects to online to spark ideas - (DONE)
-# - Implement extracting questions & answers from .txt file to use as a database - (DONE)
+# - Implement extracting questions&answers from .txt file to use as a database - (DONE)
 # - Implement saving questions & answers in the .txt file - (DONE)
+# - Add menu functionality
+# - Add function to view questions & answers (transversing and random)
+# - Add timer to do perform practice sessions
+# - Add 
 # - Improve functionality to save another variable
 # - Improve global variables functionality
-# - 
+# - Improve capability to write new data to .txt file
 
 cards =[]
 
