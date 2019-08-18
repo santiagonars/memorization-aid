@@ -20,8 +20,15 @@
 cards =[]
 
 def main():
+    #TODO: menu()
     LoadFile(cards)
-    SaveQuestion()
+
+    print("Would you like to add a question?")
+    response = input().strip()
+    if response == "yes":
+        SaveQuestion()
+    else:
+        pass
     '''with open("topicname.txt", "r") as dfile:
         #for line in iter(5dfile.readline, ''):
         for line in dfile:
