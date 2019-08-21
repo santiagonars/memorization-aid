@@ -20,6 +20,7 @@
 # - Improve global variables functionality
 # - Improve capability to write new data to .txt file
 
+global cards
 cards =[]
 
 def main():
@@ -38,7 +39,7 @@ def main():
     SaveQuestion(question, answer)
     '''
 
-def LoadFile(cards):
+def LoadFile():
     with open("topicname.txt", "r") as dfile:
         #for line in iter(dfile.readline, ''):
         for line in dfile:
@@ -87,5 +88,5 @@ def SaveAnotherQuestion():
     
 
 if __name__ == '__main__':
-    LoadFile(cards)
+    LoadFile()
     main()
