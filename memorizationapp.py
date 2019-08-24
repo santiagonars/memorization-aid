@@ -9,7 +9,7 @@
 # - look at similar projects to online to spark ideas - (DONE)
 # - Implement extracting questions&answers from .txt file to use as a database - (DONE)
 # - Implement saving questions & answers in the .txt file - (DONE)
-# - Add menu functionality
+# - TODO: Add menu functionality 
 # - Add function to view questions & answers (transversing and random)
 # - Add timer to do perform practice sessions
 # - Add option to delete a question&answer
@@ -28,18 +28,15 @@ def main():
     print("Would you like to add a question?")
     response = input().strip()
     if response == "yes":
-        SaveQuestion()
+        saveQuestion()
     else:
         pass     
-    '''print("What question would you like to save?")
-    question = input().strip()
-    print("What is the answer for the question?")
-    answer = input().strip()
 
-    SaveQuestion(question, answer)
-    '''
 
-def LoadFile():
+def menu():
+    pass
+
+def loadFile():
     with open("topicname.txt", "r") as dfile:
         #for line in iter(dfile.readline, ''):
         for line in dfile:
@@ -47,7 +44,8 @@ def LoadFile():
             cards.append(temp)
         print(cards) 
 
-def SaveQuestion():
+
+def saveQuestion():
     print("Type the 'Question': ")
     question = input().strip()
     print("Type the 'Answer': ")
@@ -64,29 +62,15 @@ def SaveQuestion():
     print("Would you like save another question?")
     response = input().strip()
     if response == "yes":
-        SaveAnotherQuestion()
+        saveAnotherQuestion()
     else:
         pass
 
-def SaveAnotherQuestion():
-    SaveQuestion()
-    
-"""     print("Would you like to add another question?")
-    response = input().strip()
-    if (response == "yes" or "y"):
-        print("What question would you like to save?")
-        question = input().strip()
-        print("What is the answer for the question?")
-        answer = input().strip()
 
-        SaveQuestion(question, answer)
-        
-    elif (response == "no" or "n"): #ERROR! not working
-        return print(cards)
-    else:
-        return print("Enter yes or no")   """
+def saveAnotherQuestion():
+    saveQuestion()
     
 
 if __name__ == '__main__':
-    LoadFile()
+    loadFile()
     main()
