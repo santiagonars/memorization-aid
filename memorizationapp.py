@@ -19,22 +19,55 @@
 # - Improve functionality to save another variable
 # - Improve global variables functionality
 # - Improve capability to write new data to .txt file
+# - Improve menu with sonsole-menu library (https://pypi.org/project/console-menu/)
 
 global cards
 cards =[]
 
 def main():
-    #TODO: menu()
-    print("Would you like to add a question?")
-    response = input().strip()
-    if response == "yes":
-        saveQuestion()
-    else:
-        pass     
+    loadFile()
+    menu()
 
 
 def menu():
-    pass
+    width = 60
+    for l in range(2):
+        l = '-'.center(width,'-')
+        print(l)
+    print('Practice Memorization'.center(width, '-'))
+    for l in range(2):
+        l = '-'.center(width,'-')
+        print(l)
+    print('-----Select an Option:'.ljust(width, '-'))
+    print('-'.center(width, '-'))
+    print('-------(1) Start a practice session')
+    print('-------(2) Add a new question')
+    print('-------(3) Create a new topic list')
+    print('-------(4) Delete questions')
+    print('-------(5) View list of questions')
+    print('-------(6) Exit')
+    menuResponse()
+
+def menuResponse():
+    width = 60
+    response = input().strip()
+    print('-'.center(width, '-'))
+    if response == '1':
+        saveQuestion()
+    elif response == '2':
+        saveQuestion()
+    elif response == '3':
+        pass
+    elif response == '4':
+        pass
+    elif response == '5':
+        viewQuestionList()
+    elif response == '6':
+        exit
+    else:
+        print('Only type a number from one of the available options and press enter')
+        menuResponse()
+
 
 def loadFile():
     with open("topicname.txt", "r") as dfile:
@@ -42,7 +75,7 @@ def loadFile():
         for line in dfile:
             temp = eval(line)
             cards.append(temp)
-        print(cards) 
+        # print(cards) 
 
 
 def saveQuestion():
@@ -64,13 +97,25 @@ def saveQuestion():
     if response == "yes":
         saveAnotherQuestion()
     else:
-        pass
+        menu()
 
 
 def saveAnotherQuestion():
     saveQuestion()
-    
 
-if __name__ == '__main__':
-    loadFile()
+
+def viewQuestionList():
+    print(cards)
+    #print('which topic list would you like to view?')
+
+
+def addNewTopicList():
+    pass
+
+
+def deleteQuestion():
+    pass
+
+
+if __name__ == '__main__':  
     main()
