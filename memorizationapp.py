@@ -5,11 +5,11 @@
 #  - Just do a simple demonstration that it will work to practice skills
 #  - no need to include GUI yet
 #  - Keep it simple for now!!!
-#---------------------------BACKLOG:TODO:------------------------------_
+#---------------------------BACKLOG:TODO:------------------------------
 # - look at similar projects to online to spark ideas - (DONE)
 # - Implement extracting questions&answers from .txt file to use as a database - (DONE)
 # - Implement saving questions & answers in the .txt file - (DONE)
-# - TODO: Add menu functionality 
+# - Add menu functionality (DONE)
 # - Add function to view questions & answers (transversing and random)
 # - Add timer to do perform practice sessions
 # - Add option to delete a question&answer
@@ -27,10 +27,11 @@ cards =[]
 def main():
     loadFile()
     menu()
+    #viewQuestionList()
 
 
 def menu():
-    width = 60
+    width = 70
     for l in range(2):
         l = '-'.center(width,'-')
         print(l)
@@ -48,8 +49,9 @@ def menu():
     print('-------(6) Exit')
     menuResponse()
 
+
 def menuResponse():
-    width = 60
+    width = 70
     response = input().strip()
     print('-'.center(width, '-'))
     if response == '1':
@@ -65,7 +67,7 @@ def menuResponse():
     elif response == '6':
         exit
     else:
-        print('Only type a number from one of the available options and press enter')
+        print('!! Only type a number from the available options and press enter')
         menuResponse()
 
 
@@ -95,18 +97,19 @@ def saveQuestion():
     print("Would you like save another question?")
     response = input().strip()
     if response == "yes":
-        saveAnotherQuestion()
+        saveQuestion()
     else:
         menu()
 
 
-def saveAnotherQuestion():
-    saveQuestion()
-
-
 def viewQuestionList():
-    print(cards)
+    #print(cards)
     #print('which topic list would you like to view?')
+    print('id : Question : Answer')
+    print('-'.center(25, '-'))
+    for i,line in enumerate(cards, start=1):
+        print(i, "-",line[0],':',line[1])
+
 
 
 def addNewTopicList():
