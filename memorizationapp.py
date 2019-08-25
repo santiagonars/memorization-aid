@@ -10,7 +10,8 @@
 # - Implement extracting questions&answers from .txt file to use as a database - (DONE)
 # - Implement saving questions & answers in the .txt file - (DONE)
 # - Add menu functionality (DONE)
-# - Add function to view questions & answers (transversing and random)
+# - Add function to view questions (DONE)
+# - Add function to transverse and view random questions
 # - Add timer to do perform practice sessions
 # - Add option to delete a question&answer
 # - Add function to create separate text file by area of knowledge
@@ -27,7 +28,7 @@ cards =[]
 def main():
     loadFile()
     menu()
-    #viewQuestionList()
+    # viewQuestionList()
 
 
 def menu():
@@ -96,20 +97,27 @@ def saveQuestion():
     
     print("Would you like save another question?")
     response = input().strip()
-    if response == "yes":
+    if response == "yes" or response == "y":
         saveQuestion()
     else:
         menu()
 
 
 def viewQuestionList():
-    #print(cards)
-    #print('which topic list would you like to view?')
-    print('id : Question : Answer')
+    # TODO: Ask user what list to view 
+    print('ID : QUESTION : ANSWER')
     print('-'.center(25, '-'))
     for i,line in enumerate(cards, start=1):
         print(i, "-",line[0],':',line[1])
+    print('-'.center(25, '-'))
 
+    print("Would you like view another list?")
+    response = input().strip()
+    if response == 'yes' or response == 'y':
+        # TODO: Ask user what list to view 
+        viewQuestionList()
+    else:
+        menu()
 
 
 def addNewTopicList():

@@ -2,4 +2,3 @@
 ['creed', 'greek']
 ['What is money', 'the transfer of wealth']
 ['car', 'green']
-['1', '2']
