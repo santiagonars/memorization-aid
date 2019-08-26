@@ -11,8 +11,9 @@
 # - Implement saving questions & answers in the .txt file - (DONE)
 # - Add menu functionality (DONE)
 # - Add function to view questions (DONE)
-# - Add function to transverse and view random questions
-# - Add timer to do perform practice sessions
+# - Add function to create a random questions list (DONE)
+# - Add function to perform a practice session
+# - Add timer to practice sessions
 # - Add option to delete a question&answer
 # - Add function to create separate text file by area of knowledge
 # - Add option to edit a question&answer
@@ -21,6 +22,8 @@
 # - Improve global variables functionality
 # - Improve capability to write new data to .txt file
 # - Improve menu with sonsole-menu library (https://pypi.org/project/console-menu/)
+import random
+
 
 global cards
 cards =[]
@@ -28,7 +31,6 @@ cards =[]
 def main():
     loadFile()
     menu()
-    # viewQuestionList()
 
 
 def menu():
@@ -81,6 +83,12 @@ def loadFile():
         # print(cards) 
 
 
+def randomQuestion():
+    r = list(cards)
+    random.shuffle(r)
+    print("After Reshuffling list : ", r)
+
+
 def saveQuestion():
     print("Type the 'Question': ")
     question = input().strip()
@@ -105,7 +113,7 @@ def saveQuestion():
 
 def viewQuestionList():
     # TODO: Ask user what list to view 
-    print('ID : QUESTION : ANSWER')
+    print('ID - QUESTION : ANSWER')
     print('-'.center(25, '-'))
     for i,line in enumerate(cards, start=1):
         print(i, "-",line[0],':',line[1])
