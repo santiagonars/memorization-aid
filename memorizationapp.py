@@ -12,7 +12,7 @@
 # - Add menu functionality (DONE)
 # - Add function to view questions (DONE)
 # - Add function to create a random questions list (DONE)
-# - Add function to perform a practice session
+# - Add function to perform a practice session (Almost DONE - check todo within function)
 # - Add timer to practice sessions
 # - Add option to delete a question&answer
 # - Add function to create separate text file by area of knowledge
@@ -31,6 +31,7 @@ cards =[]
 def main():
     loadFile()
     menu()
+    # practiceSession()
 
 
 def menu():
@@ -58,7 +59,7 @@ def menuResponse():
     response = input().strip()
     print('-'.center(width, '-'))
     if response == '1':
-        saveQuestion()
+        practiceSession()
     elif response == '2':
         saveQuestion()
     elif response == '3':
@@ -86,7 +87,27 @@ def loadFile():
 def randomQuestion():
     r = list(cards)
     random.shuffle(r)
-    print("After Reshuffling list : ", r)
+    # print("After Reshuffling list : ", r)
+    return r
+
+
+def practiceSession():
+    shuffList = randomQuestion()
+    width = 50
+    print('*Press Return to see answer and continue'.center(width,'-'))
+    print('-'.center(width,'-'))
+    for i in shuffList:
+        q = i[0]
+        a = i[1]
+        print('\nQUESTION: ', q)
+        response = input().strip()
+        if response == '':
+            print('ANSWER: ', a)
+            print('-'.center(width,'-'))
+            # TODO: Make notice that user has reached end of list
+        else:
+            pass
+
 
 
 def saveQuestion():
