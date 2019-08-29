@@ -1,5 +1,5 @@
 ['age', '27']
-['creed', 'greek']
 ['What is money', 'the transfer of wealth']
-['car', 'green']
-['1', '2']
+['OOP', 'programming paradigm']
+['Polymorphism', 'having many forms']
+['Abstraction', 'focus on the essential qualities\xa0of something rather than one specific example']

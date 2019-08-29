@@ -12,8 +12,8 @@
 # - Add menu functionality (DONE)
 # - Add function to view questions (DONE)
 # - Add function to create a random questions list (DONE)
-# - Add function to perform a practice session (Almost DONE - check todo within function)
-# - Add option to delete a question&answer
+# - Add function to perform a practice session (DONE)
+# - Add option to delete a question&answer (DONE)
 # - Add function to create separate text file by area of knowledge
 # - Add timer to practice sessions
 # - Add option to edit a question&answer
@@ -31,7 +31,6 @@ cards =[]
 def main():
     loadFile()
     menu()
-    # practiceSession()
 
 
 def menu():
@@ -65,13 +64,13 @@ def menuResponse():
     elif response == '3':
         pass
     elif response == '4':
-        pass
+        deleteQuestion()
     elif response == '5':
         viewQuestionList()
     elif response == '6':
         exit
     else:
-        print('!! Only type a number from the available options and press enter')
+        print('>>> Only type a number from the available options and press enter!')
         menuResponse()
 
 
@@ -82,6 +81,13 @@ def loadFile():
             temp = eval(line)
             cards.append(temp)
         # print(cards) 
+
+
+def saveFile():
+    with open("topicname.txt", "w") as dfile:
+        for line in cards:
+            # TODO: add function so it doesnt rewrite entire file
+            dfile.write("%s\n" % line)
 
 
 def randomQuestion():
@@ -118,18 +124,15 @@ def practiceSession():
     menu()
 
 def saveQuestion():
-    print("Type the 'Question': ")
+    print("Type the QUESTION: ")
     question = input().strip()
-    print("Type the 'Answer': ")
+    print("Type the ANSWER: ")
     answer = input().strip()
     new = [question,answer]
     cards.append(new) 
-    print(cards)
+    # print(cards)
 
-    with open("topicname.txt", "w") as dfile:
-        for line in cards:
-            # TODO: add function so it doesnt rewrite entire file
-            dfile.write("%s\n" % line)
+    saveFile()
     
     print("Would you like save another question?")
     response = input().strip()
@@ -156,11 +159,30 @@ def viewQuestionList():
         menu()
 
 
-def addNewTopicList():
-    pass
-
-
 def deleteQuestion():
+    pass
+    # TODO: Ask user what list to view 
+    print('ID - QUESTION : ANSWER')
+    print('-'.center(25, '-'))
+    for i,line in enumerate(cards, start=1):
+        print(i, "-",line[0],':',line[1])
+    print('-'.center(25, '-'))
+
+    print('>>> Enter ID to delete OR q to quit:')
+    response = input().strip()
+    if response == 'q':
+        menu()
+    else:
+        for i,line in enumerate(cards, start=1):
+            if i == int(response):
+                cards.remove(line)
+                saveFile()
+                print(line, ' has been removed from the list!\n')
+                menu()
+    # print(cards)
+
+
+def addNewTopicList():
     pass
 
 
