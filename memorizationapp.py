@@ -13,9 +13,9 @@
 # - Add function to view questions (DONE)
 # - Add function to create a random questions list (DONE)
 # - Add function to perform a practice session (Almost DONE - check todo within function)
-# - Add timer to practice sessions
 # - Add option to delete a question&answer
 # - Add function to create separate text file by area of knowledge
+# - Add timer to practice sessions
 # - Add option to edit a question&answer
 # - Add parameter that allows one to archive a question
 # - Improve functionality to save another variable
@@ -106,13 +106,16 @@ def practiceSession():
         if response == '':
             print('ANSWER: ', ans)
             print('-'.center(width,'-'))
-            # TODO: Make notice that user has reached end of list
+            if i[0] == shuffList[len(shuffList)-1][0]:
+                print('>>> Congrats! You have reached the end of the list!\n')
         elif response == 'q':
-            menu()
+            break
         else:
             print('-'.center(width,'-'))
+            if i[0] == shuffList[len(shuffList)-1][0]:
+                print('>>> Congrats! You have reached the end of the list!\n')
             next
-
+    menu()
 
 def saveQuestion():
     print("Type the 'Question': ")
