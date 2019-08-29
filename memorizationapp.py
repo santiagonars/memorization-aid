@@ -94,20 +94,24 @@ def randomQuestion():
 def practiceSession():
     shuffList = randomQuestion()
     width = 50
-    print('*Press Return to see answer and continue'.center(width,'-'))
+    print('-----*Press Return to see answer and continue'.ljust(width,'-'))
+    print('-----*Enter any character to skip'.ljust(width,'-'))
+    print('-----*Enter q to quit'.ljust(width,'-'))
     print('-'.center(width,'-'))
     for i in shuffList:
-        q = i[0]
-        a = i[1]
-        print('\nQUESTION: ', q)
+        ques = i[0]
+        ans = i[1]
+        print('QUESTION: ', ques)
         response = input().strip()
         if response == '':
-            print('ANSWER: ', a)
+            print('ANSWER: ', ans)
             print('-'.center(width,'-'))
             # TODO: Make notice that user has reached end of list
+        elif response == 'q':
+            menu()
         else:
-            pass
-
+            print('-'.center(width,'-'))
+            next
 
 
 def saveQuestion():
