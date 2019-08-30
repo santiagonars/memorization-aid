@@ -22,18 +22,20 @@
 # - Improve functionality to save another variable
 # - Improve global variables functionality
 # - Improve capability to write new data to .txt file
+# - NOTE: currently after loading a file to cards, data cant be extracted right away to be used
 # - Improve menu with sonsole-menu library (https://pypi.org/project/console-menu/)
 import random
 import glob
 
 
-global cards, tname
+global cards #, tname
 cards = []
-tname = str()
+tname = []
 
 def main():
     menu()
     # loadFile()
+    # createNewTopicList()
     
 
 def menu():
@@ -61,17 +63,21 @@ def menuResponse():
     response = input().strip()
     print('-'.center(width, '-'))
     if response == '1':
+        cards = []
         loadFile()
         practiceSession()
     elif response == '2':
+        cards = []
         loadFile()
         saveQuestion()
     elif response == '3':
         createNewTopicList()
     elif response == '4':
+        cards = []
         loadFile()
         deleteQuestion()
     elif response == '5':
+        cards = []
         loadFile()
         viewQuestionList()
     elif response == '6':
@@ -93,9 +99,8 @@ def createNewTopicList():
 
 def loadFile():
     # ALT: add a new parameter to the first list that accounts for topic name and index each time to work this those values
-    cards = []
     topics = []
-    tname = ''
+    tname = []
     width = 25
     for file in glob.glob("*.txt"):
         topics.append(file)
@@ -111,13 +116,12 @@ def loadFile():
     else:
         for i,name in enumerate(topics, start=1):
             if i == response:
-                tname = name
+                tname.append(name)
                 with open(name, "r") as dfile:
                     for line in dfile:
                         temp = eval(line) # eval(): value needs to be defined (file must be empty or in correct format)
                         cards.append(temp)
-                    # print(cards) 
-            # TODO: option when id response not in list.
+            # TODO: option when id response not in list
 
 
 def randomQuestion():
@@ -153,9 +157,9 @@ def practiceSession():
     menu()
 
 
-# TODO: fixed to save correct file name that's been worked on
 def saveFile():
-    with open(tname, "w") as dfile:
+    n = tname[0]
+    with open(n, "w") as dfile:
         for line in cards:
             # TODO: add function so it doesnt rewrite entire file
             dfile.write("%s\n" % line)
