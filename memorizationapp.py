@@ -15,7 +15,7 @@
 # - Add function to perform a practice session (DONE)
 # - Add option to delete a question&answer (DONE)
 # - Add function to create separate text file by area of knowledge (DONE)
-# - Add function to see lists of topics (In progress)
+# - Add function to see lists of topics (DONE)
 # - Add timer to practice sessions
 # - Add option to edit a question&answer
 # - Add parameter that allows one to archive a question
