@@ -16,6 +16,8 @@
 # - Add option to delete a question&answer (DONE)
 # - Add function to create separate text file by area of knowledge (DONE)
 # - Add function to see lists of topics (DONE)
+# - BUG : fix viewQuestion function
+# - BUG : fix deleteQuestion function
 # - Add timer to practice sessions
 # - Add option to edit a question&answer
 # - Add parameter that allows one to archive a question
@@ -28,9 +30,9 @@ import random
 import glob
 
 
-global cards
-cards = []
-tname = []
+global cards, tname
+cards = list()
+tname = list()
 
 def main():
     menu()
@@ -63,21 +65,17 @@ def menuResponse():
     response = input().strip()
     print('-'.center(width, '-'))
     if response == '1':
-        # cards = []
         loadFile()
         practiceSession()
     elif response == '2':
-        # cards = []
         loadFile()
         saveQuestion()
     elif response == '3':
         createNewTopicList()
     elif response == '4':
-        # cards = []
         loadFile()
         deleteQuestion()
     elif response == '5':
-        # cards = []
         loadFile()
         viewQuestionList()
     elif response == '6':
@@ -90,8 +88,8 @@ def menuResponse():
 def loadFile():
     # ALT: add a new parameter to the first list that accounts for topic name and index each time to work this those values
     topics = []
-    tname = []
-    cards = []
+    tname.clear()
+    cards.clear()
     width = 25
     for file in glob.glob("*.txt"):
         topics.append(file)
@@ -149,6 +147,7 @@ def practiceSession():
 
 
 def saveFile():
+    # print('tname before saving file: ', tname)
     n = tname[0]
     with open(n, "w") as dfile:
         for line in cards:
@@ -163,10 +162,9 @@ def saveQuestion():
     answer = input().strip()
     new = [question,answer]
     cards.append(new) 
-    # print(cards)
 
     saveFile()
-    
+    # TODO: Add argument so code below doesn't execute for the delete function
     print("Would you like save another question?")
     response = input().strip()
     if response == "yes" or response == "y":
