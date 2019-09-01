@@ -28,7 +28,7 @@ import random
 import glob
 
 
-global cards #, tname
+global cards
 cards = []
 tname = []
 
@@ -63,21 +63,21 @@ def menuResponse():
     response = input().strip()
     print('-'.center(width, '-'))
     if response == '1':
-        cards = []
+        # cards = []
         loadFile()
         practiceSession()
     elif response == '2':
-        cards = []
+        # cards = []
         loadFile()
         saveQuestion()
     elif response == '3':
         createNewTopicList()
     elif response == '4':
-        cards = []
+        # cards = []
         loadFile()
         deleteQuestion()
     elif response == '5':
-        cards = []
+        # cards = []
         loadFile()
         viewQuestionList()
     elif response == '6':
@@ -87,20 +87,11 @@ def menuResponse():
         menuResponse()
 
 
-def createNewTopicList():
-    print('----Select a TOPIC name for the new list:')
-    response = str(input().strip())
-    name = response + '_topic.txt'
-    with open(name, 'w') as nfile:
-        nfile.write('')
-    print('\n',name,' has been created!\n')
-    menu()
-
-
 def loadFile():
     # ALT: add a new parameter to the first list that accounts for topic name and index each time to work this those values
     topics = []
     tname = []
+    cards = []
     width = 25
     for file in glob.glob("*.txt"):
         topics.append(file)
@@ -184,19 +175,14 @@ def saveQuestion():
         menu()
 
 
-def viewQuestionList():
-    print('ID - QUESTION : ANSWER')
-    print('-'.center(25, '-'))
-    for i,line in enumerate(cards, start=1):
-        print(i, "-",line[0],':',line[1])
-    print('-'.center(25, '-'))
-    print("Would you like view another list?")
-    response = input().strip()
-    if response == 'yes' or response == 'y':
-        # TODO: Ask user what list to view 
-        viewQuestionList()
-    else:
-        menu()
+def createNewTopicList():
+    print('----Select a TOPIC name for the new list:')
+    response = str(input().strip())
+    name = response + '_topic.txt'
+    with open(name, 'w') as nfile:
+        nfile.write('')
+    print('\n',name,' has been created!\n')
+    menu()
 
 
 def deleteQuestion():
@@ -216,7 +202,22 @@ def deleteQuestion():
                 saveFile()
                 print(line, ' has been removed from the list!\n')
                 menu()
-            # TODO: option when id response not in list.             
+            # TODO: option when id response not in list.   
+
+
+def viewQuestionList():
+    print('ID - QUESTION : ANSWER')
+    print('-'.center(25, '-'))
+    for i,line in enumerate(cards, start=1):
+        print(i, "-",line[0],':',line[1])
+    print('-'.center(25, '-'))
+    print("Would you like view another list?")
+    response = input().strip()
+    if response == 'yes' or response == 'y':
+        # TODO: Ask user what list to view 
+        viewQuestionList()
+    else:
+        menu()          
 
 
 if __name__ == '__main__':  

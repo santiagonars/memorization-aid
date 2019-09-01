@@ -1,1 +1,5 @@
-['general', 'yes']
+['age', '27']
+['What is money', 'the transfer of wealth']
+['OOP', 'programming paradigm']
+['Polymorphism', 'having many forms']
+['Abstraction', 'focus on the essential qualities of something rather than one specific example']
