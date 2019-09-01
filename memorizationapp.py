@@ -1,31 +1,24 @@
 #-----------------------------NOTES:------------------------------------
 # - terminal shortcut: Documents/Github/memorization-app
 # - 
-#-----------------------MAIN OBJECTIVES:-------------------------------
+#-----------------------MAIN OBJECTIVES:--------------------------------
 #  - Just do a simple demonstration that it will work to practice skills
-#  - no need to include GUI yet
 #  - Keep it simple for now!!!
-#---------------------------BACKLOG:TODO:------------------------------
-# - look at similar projects to online to spark ideas - (DONE)
-# - Implement extracting questions&answers from .txt file to use as a database - (DONE)
-# - Implement saving questions & answers in the .txt file - (DONE)
-# - Add menu functionality (DONE)
-# - Add function to view questions (DONE)
-# - Add function to create a random questions list (DONE)
-# - Add function to perform a practice session (DONE)
-# - Add option to delete a question&answer (DONE)
-# - Add function to create separate text file by area of knowledge (DONE)
-# - Add function to see lists of topics (DONE)
+#---------------------------BACKLOG:------------------------------------
 # - BUG : fix viewQuestion function (DONE)
-# - BUG : fix deleteQuestion function
-# - Add timer to practice sessions
-# - Add option to edit a question&answer
-# - Add parameter that allows one to archive a question
-# - Improve functionality to save another variable
-# - Improve global variables functionality
-# - Improve capability to write new data to .txt file
-# - NOTE: currently after loading a file to cards, data cant be extracted right away to be used
-# - Improve menu with sonsole-menu library (https://pypi.org/project/console-menu/)
+# - BUG : fix deleteQuestion function (DONE)
+# - BUG : creating a list with existing name erases existing list
+# - BUG : deleteQuestion() - pressing q causes code ot fail
+# - TODO: Add a pause to to require user to press any key before go back to menu
+# - TODO: Add timer to practice sessions
+# - TODO: loadFile() - option when id response not in list
+# - TODO: Add comments throughout code
+# - (MAYBE)TODO: Add option to edit a question&answer
+# - (MAYBE)TODO: Add parameter that allows one to archive a question
+# - (MAYBE)TODO: Improve global variables functionality
+# - (MAYBE)TODO: Improve capability to write new data to .txt file
+# - (MAYBE)TODO: Improve menu with sonsole-menu library (https://pypi.org/project/console-menu/)
+
 import random
 import glob
 
@@ -36,8 +29,6 @@ tname = list()
 
 def main():
     menu()
-    # loadFile()
-    # createNewTopicList()
     
 
 def menu():
@@ -99,18 +90,18 @@ def loadFile():
         print(i,'-',name)
     print('-'.center(width, '-'))
     print('>>> Enter topic ID: (or q if list is empty)')
-    response = int(input().strip())
+    response = input().strip()
     if response == 'q':
         menu()
     else:
         for i,name in enumerate(topics, start=1):
-            if i == response:
+            if i == int(response):
                 tname.append(name)
                 with open(name, "r") as dfile:
                     for line in dfile:
                         temp = eval(line) # eval(): value needs to be defined (file must be empty or in correct format)
                         cards.append(temp)
-            # TODO: option when id response not in list
+    # TODO: option when id response not in list
 
 
 def randomQuestion():
