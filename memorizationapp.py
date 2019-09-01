@@ -16,7 +16,7 @@
 # - Add option to delete a question&answer (DONE)
 # - Add function to create separate text file by area of knowledge (DONE)
 # - Add function to see lists of topics (DONE)
-# - BUG : fix viewQuestion function
+# - BUG : fix viewQuestion function (DONE)
 # - BUG : fix deleteQuestion function
 # - Add timer to practice sessions
 # - Add option to edit a question&answer
@@ -212,7 +212,7 @@ def viewQuestionList():
     print("Would you like view another list?")
     response = input().strip()
     if response == 'yes' or response == 'y':
-        # TODO: Ask user what list to view 
+        loadFile()
         viewQuestionList()
     else:
         menu()          
