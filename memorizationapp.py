@@ -12,6 +12,7 @@
 # - TODO: Add timer to practice sessions
 # - TODO: loadFile() - option when id response not in list
 # - TODO: Add comments throughout code
+# - TODO: Add project info in README file in github 
 # - TODO: Add option to delete a list
 # - (MAYBE)TODO: Add option to edit a question&answer
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
