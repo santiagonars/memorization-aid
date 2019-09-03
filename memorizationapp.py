@@ -5,19 +5,19 @@
 #  - Just do a simple demonstration that it will work to practice skills
 #  - Keep it simple for now!!!
 #---------------------------BACKLOG:------------------------------------
-# - BUG : fix viewQuestion function (DONE)
-# - BUG : fix deleteQuestion function (DONE)
-# - BUG : creating a list with existing name erases existing list
-# - BUG : deleteQuestion() - pressing q causes code ot fail
-# - TODO: Add a pause to to require user to press any key before go back to menu
+# - BUG: fix viewQuestion function (DONE)
+# - BUG: fix deleteQuestion function (DONE)
+# - BUG: creating a list with existing name erases existing list (DONE)
+# - TODO: Add a pause to to require user to press any key before go back to menu for many of the functions
 # - TODO: Add timer to practice sessions
 # - TODO: loadFile() - option when id response not in list
 # - TODO: Add comments throughout code
+# - TODO: Add option to delete a list
 # - (MAYBE)TODO: Add option to edit a question&answer
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
 # - (MAYBE)TODO: Improve capability to write new data to .txt file
-# - (MAYBE)TODO: Improve menu with sonsole-menu library (https://pypi.org/project/console-menu/)
+# - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 
 import random
 import glob
@@ -89,7 +89,7 @@ def loadFile():
     for i, name in enumerate(topics, start=1):
         print(i,'-',name)
     print('-'.center(width, '-'))
-    print('>>> Enter topic ID: (or q if list is empty)')
+    print('>>> Enter topic ID: (q to exit)')
     response = input().strip()
     if response == 'q':
         menu()
@@ -165,13 +165,21 @@ def saveQuestion():
 
 
 def createNewTopicList():
+    topics = list()
     print('----Select a TOPIC name for the new list:')
     response = str(input().strip())
     name = response + '_topic.txt'
-    with open(name, 'w') as nfile:
-        nfile.write('')
-    print('\n',name,' has been created!\n')
-    menu()
+    # statement that compares name to any of the names in existing lists of topic name
+    for file in glob.glob("*.txt"):
+        topics.append(file)
+    if (name in topics):
+        print('Name already used! Please enter another name.\n')
+        createNewTopicList()
+    else:
+        with open(name, 'w') as nfile:
+            nfile.write('')
+        print('\n',name,' has been created!\n')
+        menu()
 
 
 def deleteQuestion():
