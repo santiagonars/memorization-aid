@@ -5,9 +5,6 @@
 #  - Just do a simple demonstration that it will work to practice skills
 #  - Keep it simple for now!!!
 #---------------------------BACKLOG:------------------------------------
-# - BUG: fix viewQuestion function (DONE)
-# - BUG: fix deleteQuestion function (DONE)
-# - BUG: creating a list with existing name erases existing list (DONE)
 # - TODO: Add a pause to to require user to press any key before go back to menu for many of the functions
 # - TODO: Add timer to practice sessions
 # - TODO: loadFile() - option when id response not in list
