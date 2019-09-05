@@ -1,21 +1,17 @@
-#-----------------------------NOTES:------------------------------------
-# - terminal shortcut: Documents/Github/memorization-app
+#---------------------------NOTES:------------------------------------
+# - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 # - 
-#-----------------------MAIN OBJECTIVES:--------------------------------
-#  - Just do a simple demonstration that it will work to practice skills
-#  - Keep it simple for now!!!
 #---------------------------BACKLOG:------------------------------------
-# - TODO: Add a pause to to require user to press any key before go back to menu for many of the functions
+# - TODO: Add a pause to to require user to press any key before go back to menu for many of the functions (DONE)
 # - TODO: Add timer to practice sessions
-# - TODO: loadFile() - option when id response not in list
 # - TODO: Add comments throughout code
-# - TODO: Add project info in README file in github 
+# - TODO: Add project info in README file in github
 # - TODO: Add option to delete a list
+# - TODO: loadFile() - option when id response not in list
 # - (MAYBE)TODO: Add option to edit a question&answer
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
 # - (MAYBE)TODO: Improve capability to write new data to .txt file
-# - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 
 import random
 import glob
@@ -111,9 +107,9 @@ def randomQuestion():
 def practiceSession():
     shuffList = randomQuestion()
     width = 50
-    print('-----*Press Return to see answer and continue'.ljust(width,'-'))
-    print('-----*Enter any character to skip'.ljust(width,'-'))
-    print('-----*Enter q to quit'.ljust(width,'-'))
+    print('>>> *Press Return to see answer and continue'.ljust(width,'-'))
+    print('>>> *Enter any character to skip'.ljust(width,'-'))
+    print('>>> *Enter q to quit'.ljust(width,'-'))
     print('-'.center(width,'-'))
     for i in shuffList:
         ques = i[0]
@@ -124,13 +120,15 @@ def practiceSession():
             print('ANSWER: ', ans)
             print('-'.center(width,'-'))
             if i[0] == shuffList[len(shuffList)-1][0]:
-                print('>>> Congrats! You have reached the end of the list!\n')
+                print('Congrats! You have reached the end of the list!\n')
+                input(">>> Press Enter to continue...")
         elif response == 'q':
             break
         else:
             print('-'.center(width,'-'))
             if i[0] == shuffList[len(shuffList)-1][0]:
-                print('>>> Congrats! You have reached the end of the list!\n')
+                print('Congrats! You have reached the end of the list!\n')
+                input(">>> Press Enter to continue...")
             next
     menu()
 
@@ -164,7 +162,7 @@ def saveQuestion():
 
 def createNewTopicList():
     topics = list()
-    print('----Select a TOPIC name for the new list:')
+    print('>>> Select a TOPIC name for the new list:')
     response = str(input().strip())
     name = response + '_topic.txt'
     # statement that compares name to any of the names in existing lists of topic name
@@ -177,6 +175,7 @@ def createNewTopicList():
         with open(name, 'w') as nfile:
             nfile.write('')
         print('\n',name,' has been created!\n')
+        input(">>> Press Enter to continue...")
         menu()
 
 
@@ -196,6 +195,7 @@ def deleteQuestion():
                 cards.remove(line)
                 saveFile()
                 print(line, ' has been removed from the list!\n')
+                input(">>> Press Enter to continue...")
                 menu()
             # TODO: option when id response not in list.   
 
