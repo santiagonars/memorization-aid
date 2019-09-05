@@ -7,7 +7,7 @@ Author: Santiago Norena
 Application to help me practice and memorize concepts by area of knowledge.
 (Current GUI version runs on command line)
 ---------------------------------------------------------------------------------------------------------------------------------
-=> This repository contains all the code for creating a portfolio of places visited using the Django web framework.
+=> This repository contains python (.py) file with code and any addition text (.txt) files to be used as database.
 
 
 Requires:
