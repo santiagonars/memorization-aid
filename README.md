@@ -1,6 +1,6 @@
-# Memorization Aid
+# Memorization Aid Application
 
-## folder name: memorization-app
+## folder name: memorization-aid
 
 Author: Santiago Norena
 
