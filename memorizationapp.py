@@ -1,10 +1,9 @@
-#---------------------------NOTES:------------------------------------
+#---------------------------NOTES:-------------------------------------
 # - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 # - 
 #---------------------------BACKLOG:------------------------------------
-# - TODO: Add a pause to to require user to press any key before go back to menu for many of the functions (DONE)
 # - TODO: Add timer to practice sessions
-# - TODO: Add comments throughout code
+# - TODO: Add comments throughout code (DONE)
 # - TODO: Add project info in README file in github
 # - TODO: Add option to delete a list
 # - TODO: loadFile() - option when id response not in list
@@ -12,6 +11,8 @@
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
 # - (MAYBE)TODO: Improve capability to write new data to .txt file
+#---------------------------BUGS:------------------------------------
+# - BUG: loadFile() -> entering  topic ID response twice crashes codes
 
 import random
 import glob
@@ -71,18 +72,20 @@ def menuResponse():
 
 
 def loadFile():
-    # ALT: add a new parameter to the first list that accounts for topic name and index each time to work this those values
     topics = []
     tname.clear()
     cards.clear()
     width = 25
+    # create a list with all text files in local directory
     for file in glob.glob("*.txt"):
         topics.append(file)
     print('ID - Topic file name')
     print('-'.center(width, '-'))
+    # display names of lists of topics
     for i, name in enumerate(topics, start=1):
         print(i,'-',name)
     print('-'.center(width, '-'))
+    # prompt user to select a topic list to work on
     print('>>> Enter topic ID: (q to exit)')
     response = input().strip()
     if response == 'q':
@@ -90,42 +93,51 @@ def loadFile():
     else:
         for i,name in enumerate(topics, start=1):
             if i == int(response):
+                # add name of topic list been worked on
                 tname.append(name)
                 with open(name, "r") as dfile:
                     for line in dfile:
-                        temp = eval(line) # eval(): value needs to be defined (file must be empty or in correct format)
+                        # eval(): value needs to be defined (file must be empty or in correct format)
+                        temp = eval(line) 
                         cards.append(temp)
     # TODO: option when id response not in list
 
 
 def randomQuestion():
+    # shuffle lists in cards 
     r = list(cards)
     random.shuffle(r)
     return r
 
 
 def practiceSession():
-    shuffList = randomQuestion()
+    shuffList = randomQuestion() #shuffled cards list
     width = 50
     print('>>> *Press Return to see answer and continue'.ljust(width,'-'))
     print('>>> *Enter any character to skip'.ljust(width,'-'))
     print('>>> *Enter q to quit'.ljust(width,'-'))
     print('-'.center(width,'-'))
+    # iterate through shuffle nested list
     for i in shuffList:
-        ques = i[0]
-        ans = i[1]
+        ques = i[0] # save question 
+        ans = i[1] # save answer 
         print('QUESTION: ', ques)
         response = input().strip()
-        if response == '':
+        # user presses return or enter key
+        if response == '': 
             print('ANSWER: ', ans)
             print('-'.center(width,'-'))
+            # reached end of list
             if i[0] == shuffList[len(shuffList)-1][0]:
                 print('Congrats! You have reached the end of the list!\n')
                 input(">>> Press Enter to continue...")
-        elif response == 'q':
+        # quit practice session
+        elif response == 'q': 
             break
-        else:
+        # enter any character doesnt display answer to question
+        else: 
             print('-'.center(width,'-'))
+            # reached end of list
             if i[0] == shuffList[len(shuffList)-1][0]:
                 print('Congrats! You have reached the end of the list!\n')
                 input(">>> Press Enter to continue...")
@@ -149,25 +161,27 @@ def saveQuestion():
     answer = input().strip()
     new = [question,answer]
     cards.append(new) 
-
-    saveFile()
-    # TODO: Add argument so code below doesn't execute for the delete function
+    
+    saveFile() # stored cards list of question and answer in text file
+    
     print("Would you like save another question?")
     response = input().strip()
     if response == "yes" or response == "y":
         saveQuestion()
     else:
-        menu()
+        menu() 
 
 
 def createNewTopicList():
     topics = list()
+    # prompt user to type name of topic/area of knowledge to create list name
     print('>>> Select a TOPIC name for the new list:')
     response = str(input().strip())
     name = response + '_topic.txt'
-    # statement that compares name to any of the names in existing lists of topic name
+    # get topic names already used 
     for file in glob.glob("*.txt"):
         topics.append(file)
+    # statement that compares selected topic name to any of the names in existing lists of topic name
     if (name in topics):
         print('Name already used! Please enter another name.\n')
         createNewTopicList()
@@ -180,12 +194,14 @@ def createNewTopicList():
 
 
 def deleteQuestion():
+    # diplay tabled list of questions & corresponding answers of loaded topic list
     print('ID - QUESTION : ANSWER')
     print('-'.center(25, '-'))
     for i,line in enumerate(cards, start=1):
         print(i, "-",line[0],':',line[1])
     print('-'.center(25, '-'))
-    print('>>> Enter ID to delete OR q to quit:')
+    # prompt user to select id of question & corresponding answer to delete
+    print('>>> Enter ID to delete (q to quit):')
     response = input().strip()
     if response == 'q':
         menu()
@@ -201,11 +217,13 @@ def deleteQuestion():
 
 
 def viewQuestionList():
+    # diplay tabled list of questions & corresponding answers of loaded topic list
     print('ID - QUESTION : ANSWER')
     print('-'.center(25, '-'))
     for i,line in enumerate(cards, start=1):
         print(i, "-",line[0],':',line[1])
     print('-'.center(25, '-'))
+    # prompt user to view a new list
     print("Would you like view another list?")
     response = input().strip()
     if response == 'yes' or response == 'y':
