@@ -3,8 +3,6 @@
 # - 
 #---------------------------BACKLOG:------------------------------------
 # - TODO: Add timer to practice sessions
-# - TODO: Add comments throughout code (DONE)
-# - TODO: Add project info in README file in github
 # - TODO: Add option to delete a list
 # - TODO: loadFile() - option when id response not in list
 # - (MAYBE)TODO: Add option to edit a question&answer
