@@ -4,13 +4,13 @@
 #---------------------------BACKLOG:------------------------------------
 # - TODO: Add timer to practice sessions
 # - TODO: Add option to delete a list
-# - TODO: loadFile() - option when id response not in list
+# - (MAYBE)TODO: loadFile() - option when id response not in list 
 # - (MAYBE)TODO: Add option to edit a question&answer
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
 # - (MAYBE)TODO: Improve capability to write new data to .txt file
 #---------------------------BUGS:------------------------------------
-# - BUG: loadFile() -> entering  topic ID response twice crashes codes
+# - BUG: 
 
 import random
 import glob
@@ -46,23 +46,23 @@ def menu():
 
 def menuResponse():
     width = 70
-    response = input().strip()
+    option = input().strip()
     print('-'.center(width, '-'))
-    if response == '1':
+    if option == '1':
         loadFile()
         practiceSession()
-    elif response == '2':
+    elif option == '2':
         loadFile()
         saveQuestion()
-    elif response == '3':
+    elif option == '3':
         createNewTopicList()
-    elif response == '4':
+    elif option == '4':
         loadFile()
         deleteQuestion()
-    elif response == '5':
+    elif option == '5':
         loadFile()
         viewQuestionList()
-    elif response == '6':
+    elif option == '6':
         exit
     else:
         print('>>> Only type a number from the available options and press enter!')
@@ -88,6 +88,9 @@ def loadFile():
     response = input().strip()
     if response == 'q':
         menu()
+    elif response == '':
+        print('Please Enter a valid option!\n')
+        loadFile()
     else:
         for i,name in enumerate(topics, start=1):
             if i == int(response):
