@@ -29,7 +29,7 @@ def menu():
     for l in range(2):
         l = '-'.center(width,'-')
         print(l)
-    print('Practice Memorization'.center(width, '-'))
+    print('Memorization Aid'.center(width, '-'))
     for l in range(2):
         l = '-'.center(width,'-')
         print(l)
