@@ -5,9 +5,10 @@
 # - TODO: Add functionality to edit a question 
 # - TODO: Add timer to practice sessions
 # - TODO: Add functionality to delete a list
-# - (MAYBE)TODO: Implement a linked list for deleting values?
-# - (MAYBE)TODO: loadFile() - option when id response not in list 
 # - (MAYBE)TODO: Add option to edit a question&answer
+# - (MAYBE)TODO: Try saving questions & answers in a dictionary 
+# - (MAYBE)TODO: Implement a linked list for deleting values?
+# - (MAYBE)TODO: loadFile() - option when id response not in list
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
 # - (MAYBE)TODO: Improve capability to write new data to .txt file
