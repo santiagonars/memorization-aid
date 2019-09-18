@@ -2,8 +2,10 @@
 # - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 # - 
 #---------------------------BACKLOG:------------------------------------
+# - TODO: Add functionality to edit a question 
 # - TODO: Add timer to practice sessions
-# - TODO: Add option to delete a list
+# - TODO: Add functionality to delete a list
+# - (MAYBE)TODO: Implement a linked list for deleting values?
 # - (MAYBE)TODO: loadFile() - option when id response not in list 
 # - (MAYBE)TODO: Add option to edit a question&answer
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
