@@ -1,19 +1,14 @@
-#---------------------------NOTES:-------------------------------------
-# - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
-# - 
-#---------------------------BACKLOG:------------------------------------
-# - TODO: Add functionality to edit a question 
-# - TODO: Add timer to practice sessions
-# - TODO: Add functionality to delete a list
-# - (MAYBE)TODO: Add option to edit a question&answer
-# - (MAYBE)TODO: Try saving questions & answers in a dictionary 
-# - (MAYBE)TODO: Implement a linked list for deleting values?
-# - (MAYBE)TODO: loadFile() - option when id response not in list
-# - (MAYBE)TODO: Add parameter that allows one to archive a question
-# - (MAYBE)TODO: Improve global variables functionality
-# - (MAYBE)TODO: Improve capability to write new data to .txt file
-#---------------------------BUGS:------------------------------------
-# - BUG: 
+#  *******************************************************
+#   Copyright (C) 2019 Santiago Norena <san.norena@gmail.com>
+#   
+#   This file is part of Memorization Aid.
+#   
+#   Memorization Aid can not be copied and/or distributed without the express
+#   permission of Santiago Norena
+#
+#   Version Control:
+#   9-19-2019 - Release of Memorization Aid (Version 01)
+#  *******************************************************
 
 import random
 import glob
