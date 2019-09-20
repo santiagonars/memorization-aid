@@ -13,10 +13,12 @@
 # - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 # - 
 #---------------------------BACKLOG:------------------------------------
-# - TODO: Add dictionary instead of a list
-# - TODO: Add timer to practice sessions
-# - TODO: Add option to delete a list
-# - (MAYBE)TODO: Add option to edit a question&answer
+# - TODO: Add Hash table (dictionary) instead of a list
+# - TODO: Add timer for practice sessions
+# - TODO: Add functionality to archive a list
+# - TODO: Add functionality to edit a question&answer
+# - TODO: Add functionality to delete a list
+# - TODO: Add functionality to edit a question or answer
 # - (MAYBE)TODO: loadFile() - option when id response not in list 
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
