@@ -7,10 +7,10 @@
 #   permission of Santiago Norena
 #
 #   Version Control:
-#   9-19-2019 - Release of Memorization Aid (Version 01)
+#   ---------------
+#   NOTE: 9-19-2019 - Release of Memorization Aid (Version 01)
 #  *******************************************************
-# NOTE: When running from an IDE, MAKE SURE to execute the files
-#        at the same directory level if a workspace folder was created
+
 
 import random
 import glob
