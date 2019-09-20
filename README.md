@@ -19,4 +19,4 @@ Version Control:
 
 ---DATE--------------NOTES--------------------------
 
-9-19-2019 | Release of Memorization Aid (Version 01)
+9-19-2019 | Release of Memorization Aid (Version 1.0)
