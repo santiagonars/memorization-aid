@@ -13,7 +13,7 @@
 # - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 # - 
 #---------------------------BACKLOG:------------------------------------
-# - TODO: Add Hash table (dictionary) instead of a list
+# - TODO: Add Hash table (dictionary) instead of a list / to convert to json
 # - TODO: Add timer for practice sessions
 # - TODO: Add functionality to archive a list
 # - TODO: Add functionality to edit a question&answer
@@ -28,6 +28,7 @@
 
 import random
 import glob
+import json
 
 
 global cards, tname
@@ -35,7 +36,8 @@ cards = list()
 tname = list()
 
 def main():
-    menu()
+    # menu()
+    # loadFile()
     
 
 def menu():
@@ -115,8 +117,20 @@ def loadFile():
                         # eval(): value needs to be defined (file must be empty or in correct format)
                         temp = eval(line) 
                         cards.append(temp)
+    # jsonConvert()
     # TODO: option when id response not in list
 
+def jsonConvert():
+    # pass
+    thisdict = dict()
+    for i in cards:
+        # thisdict = { cards[0][0]: cards[0][1] }
+        # thisdict.update({ cards[1][0]: cards[1][1] })
+        thisdict.update( { i[0]: i[1] } )
+        # print(dict['What should you seek?'])   
+    print(thisdict.keys())
+    # json.dump(thisdict, open("object-oriented-programming_topic.json","w"))
+    
 
 def randomQuestion():
     # shuffle lists in cards 
