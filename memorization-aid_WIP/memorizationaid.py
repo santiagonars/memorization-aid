@@ -14,6 +14,9 @@
 # - 
 #---------------------------BACKLOG:------------------------------------
 # - TODO: Add Hash table (dictionary) instead of a list / to convert to json
+#          - DONE for loading a file - currently loads to dictionary and converts back to a list
+#          - Need to do capability for saving a file as well
+#          - Need to connect all capabilities to with work with dictionary instead of a list
 # - TODO: Add timer for practice sessions
 # - TODO: Add functionality to archive a list
 # - TODO: Add functionality to edit a question&answer
@@ -36,7 +39,7 @@ cards = list()
 tname = list()
 
 def main():
-    # menu()
+    menu()
     # loadFile()
     
 
@@ -91,7 +94,7 @@ def loadFile():
     cards.clear()
     width = 25
     # create a list with all text files in local directory
-    for file in glob.glob("*.txt"):
+    for file in glob.glob("*json"):
         topics.append(file)
     print('ID - Topic file name')
     print('-'.center(width, '-'))
@@ -108,7 +111,7 @@ def loadFile():
         print('Please Enter a valid option!\n')
         loadFile()
     else:
-        for i,name in enumerate(topics, start=1):
+        """ for i,name in enumerate(topics, start=1):
             if i == int(response):
                 # add name of topic list been worked on
                 tname.append(name)
@@ -116,11 +119,20 @@ def loadFile():
                     for line in dfile:
                         # eval(): value needs to be defined (file must be empty or in correct format)
                         temp = eval(line) 
-                        cards.append(temp)
-    # jsonConvert()
+                        cards.append(temp) """
+        for i,name in enumerate(topics, start=1):
+            if i == int(response):
+                # add name of topic list been worked on
+                tname.append(name)
+                with open(name,  "r") as jsonFile:
+                    cardsDict = json.load(jsonFile)
+                    for key in cardsDict:
+                        # print(key, ": ", cardsDict[key])
+                        cards.append([key, cardsDict[key] ])
+    # print(cards)
     # TODO: option when id response not in list
 
-def jsonConvert():
+""" def jsonConvert():
     # pass
     thisdict = dict()
     for i in cards:
@@ -129,7 +141,7 @@ def jsonConvert():
         thisdict.update( { i[0]: i[1] } )
         # print(dict['What should you seek?'])   
     print(thisdict.keys())
-    # json.dump(thisdict, open("object-oriented-programming_topic.json","w"))
+    # json.dump(thisdict, open("object-oriented-programming_topic.json","w")) """
     
 
 def randomQuestion():
