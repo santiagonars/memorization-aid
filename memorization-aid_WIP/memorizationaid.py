@@ -125,7 +125,7 @@ def loadFile():
                 # add name of topic list been worked on
                 tname.append(name)
                 with open(name,  "r") as jsonFile:
-                    cardsDict = json.load(jsonFile)
+                    cardsDict = json.load(jsonFile) # save in a dictionary
                     for key in cardsDict:
                         # print(key, ": ", cardsDict[key])
                         cards.append([key, cardsDict[key] ])
