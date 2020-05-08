@@ -13,25 +13,29 @@
 # - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
 # - 
 #---------------------------BACKLOG:------------------------------------
-# - TODO: Add Hash table (dictionary) instead of a list / to convert to json
-#          - DONE for loading a file - currently loads to dictionary and converts back to a list
-#          - Need to do capability for saving a file as well
-#          - Need to connect all capabilities to with work with dictionary instead of a list
 # - TODO: Add timer for practice sessions
 # - TODO: Add functionality to archive a list
 # - TODO: Add functionality to edit a question&answer
 # - TODO: Add functionality to delete a list
 # - TODO: Add functionality to edit a question or answer
-# - (MAYBE)TODO: loadFile() - option when id response not in list 
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
-# - (MAYBE)TODO: Improve capability to write new data to .txt file
+
+# - TODO: loadFile() - option when id response not in list (Done)
+# - TODO: Add Hash table (dictionary) instead of a list / to convert to json (Done)
+#          - loading a file - currently loads to dictionary and converts back to a list
+#          - Need to do capability for saving a file as well
 #---------------------------BUGS:------------------------------------
-# - BUG: 
+# - BUG: new topic list - check for saving json correctly (done)
+# - BUG: Add / delete a question - check for saving json correctly (done)
+# - BUG: open an empty json file causes an error (done)
+
+
 
 import random
 import glob
 import json
+from json import JSONDecodeError
 
 
 global cards, tname
@@ -40,8 +44,7 @@ tname = list()
 
 def main():
     menu()
-    # loadFile()
-    
+
 
 def menu():
     width = 70
@@ -99,18 +102,17 @@ def loadFile():
     print('ID - Topic file name')
     print('-'.center(width, '-'))
     # display names of lists of topics
+    topicOptions = list()
     for i, name in enumerate(topics, start=1):
         print(i,'-',name)
+        topicOptions.append(str(i))
     print('-'.center(width, '-'))
     # prompt user to select a topic list to work on
     print('>>> Enter topic ID: (q to exit)')
     response = input().strip()
     if response == 'q':
         menu()
-    elif response == '':
-        print('Please Enter a valid option!\n')
-        loadFile()
-    else:
+    elif response in topicOptions:
         """ for i,name in enumerate(topics, start=1):
             if i == int(response):
                 # add name of topic list been worked on
@@ -125,23 +127,27 @@ def loadFile():
                 # add name of topic list been worked on
                 tname.append(name)
                 with open(name,  "r") as jsonFile:
-                    cardsDict = json.load(jsonFile) # save in a dictionary
-                    for key in cardsDict:
-                        # print(key, ": ", cardsDict[key])
-                        cards.append([key, cardsDict[key] ])
-    # print(cards)
-    # TODO: option when id response not in list
-
-""" def jsonConvert():
-    # pass
+                    try:
+                        cardsDict = json.load(jsonFile) # save in a dictionary
+                        for key in cardsDict:
+                            cards.append([key, cardsDict[key] ])
+                    except JSONDecodeError as err:
+                        print("Whoops, json encoder error:")
+                        print(err.msg)
+                        print(err.lineno, err.colno)
+                        input("File might be empty... Press enter to continue")
+                        print("\n")
+    else:
+        print('Please Enter a valid option!\n')
+        loadFile()
+        
+# used to convert *.txt files to *.json files
+def jsonConvert():
     thisdict = dict()
     for i in cards:
-        # thisdict = { cards[0][0]: cards[0][1] }
-        # thisdict.update({ cards[1][0]: cards[1][1] })
-        thisdict.update( { i[0]: i[1] } )
-        # print(dict['What should you seek?'])   
+        thisdict.update( { i[0]: i[1] } )  
     print(thisdict.keys())
-    # json.dump(thisdict, open("object-oriented-programming_topic.json","w")) """
+    json.dump(thisdict, open("name_topic.json","w"))
     
 
 def randomQuestion():
@@ -187,12 +193,16 @@ def practiceSession():
 
 
 def saveFile():
-    # print('tname before saving file: ', tname)
+    # n represent name of file currently been used for cards array
     n = tname[0]
-    with open(n, "w") as dfile:
-        for line in cards:
-            # TODO: add function so it doesnt rewrite entire file
-            dfile.write("%s\n" % line)
+    dictData = dict(cards)
+
+    try:
+        json.dump(dictData, open(n,"w"))    
+    except JSONDecodeError as err:
+        print("Whoops, json encoder error:")
+        print(err.msg)
+        print(err.lineno, err.colno)
 
 
 def saveQuestion():
@@ -205,7 +215,7 @@ def saveQuestion():
     
     saveFile() # stored cards list of question and answer in text file
     
-    print("Would you like save another question?")
+    print("---> Would you like save another question?")
     response = input().strip()
     if response == "yes" or response == "y":
         saveQuestion()
@@ -218,21 +228,25 @@ def createNewTopicList():
     # prompt user to type name of topic/area of knowledge to create list name
     print('>>> Select a TOPIC name for the new list:')
     response = str(input().strip())
-    name = response + '_topic.txt'
+    name = response + '_topic.json'
     # get topic names already used 
-    for file in glob.glob("*.txt"):
+    for file in glob.glob("*.json"):
         topics.append(file)
     # statement that compares selected topic name to any of the names in existing lists of topic name
     if (name in topics):
         print('Name already used! Please enter another name.\n')
         createNewTopicList()
     else:
-        with open(name, 'w') as nfile:
-            nfile.write('')
-        print('\n',name,' has been created!\n')
+        newDict = dict()
+        try:
+            json.dump(newDict, open(name,"w"))
+            print('\n',name,' has been created!\n')   
+        except JSONDecodeError as err:
+            print("Whoops, json encoder error:")
+            print(err.msg)
+            print(err.lineno, err.colno)
         input(">>> Press Enter to continue...")
         menu()
-
 
 def deleteQuestion():
     # diplay tabled list of questions & corresponding answers of loaded topic list
@@ -251,6 +265,7 @@ def deleteQuestion():
             if i == int(response):
                 cards.remove(line)
                 saveFile()
+                print("\n")
                 print(line, ' has been removed from the list!\n')
                 input(">>> Press Enter to continue...")
                 menu()
