@@ -131,14 +131,6 @@ def loadFile():
     else:
         print('Please Enter a valid option!\n')
         loadFile()
-        
-# used to convert *.txt files to *.json files
-def jsonConvert():
-    thisdict = dict()
-    for i in cards:
-        thisdict.update( { i[0]: i[1] } )  
-    print(thisdict.keys())
-    json.dump(thisdict, open("name_topic.json","w"))
     
 
 def randomQuestion():
@@ -288,6 +280,13 @@ def viewQuestionList():
     else:
         menu()          
 
+# used to convert *.txt files to *.json files
+def jsonConvert():
+    thisdict = dict()
+    for i in cards:
+        thisdict.update( { i[0]: i[1] } )  
+    print(thisdict.keys())
+    json.dump(thisdict, open("statistics_topic.json","w"))
 
 if __name__ == '__main__':  
     main()
