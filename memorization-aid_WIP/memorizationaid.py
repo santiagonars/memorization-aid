@@ -20,17 +20,8 @@
 # - TODO: Add functionality to edit a question or answer
 # - (MAYBE)TODO: Add parameter that allows one to archive a question
 # - (MAYBE)TODO: Improve global variables functionality
-
-# - TODO: loadFile() - option when id response not in list (Done)
-# - TODO: Add Hash table (dictionary) instead of a list / to convert to json (Done)
-#          - loading a file - currently loads to dictionary and converts back to a list
-#          - Need to do capability for saving a file as well
 #---------------------------BUGS:------------------------------------
-# - BUG: new topic list - check for saving json correctly (done)
-# - BUG: Add / delete a question - check for saving json correctly (done)
-# - BUG: open an empty json file causes an error (done)
-
-
+# - BUG: 
 
 import random
 import glob
@@ -87,7 +78,7 @@ def menuResponse():
     elif option == '6':
         exit
     else:
-        print('>>> Only type a number from the available options and press enter!')
+        print('>>> Only type a number from the available options and press return!')
         menuResponse()
 
 
@@ -135,7 +126,7 @@ def loadFile():
                         print("Whoops, json encoder error:")
                         print(err.msg)
                         print(err.lineno, err.colno)
-                        input("File might be empty... Press enter to continue")
+                        input("File might be empty... Press any key to continue")
                         print("\n")
     else:
         print('Please Enter a valid option!\n')
@@ -177,7 +168,7 @@ def practiceSession():
             # reached end of list
             if i[0] == shuffList[len(shuffList)-1][0]:
                 print('Congrats! You have reached the end of the list!\n')
-                input(">>> Press Enter to continue...")
+                input(">>> Press any key to continue...")
         # quit practice session
         elif response == 'q': 
             break
@@ -187,7 +178,7 @@ def practiceSession():
             # reached end of list
             if i[0] == shuffList[len(shuffList)-1][0]:
                 print('Congrats! You have reached the end of the list!\n')
-                input(">>> Press Enter to continue...")
+                input(">>> Press any key to continue...")
             next
     menu()
 
@@ -245,31 +236,40 @@ def createNewTopicList():
             print("Whoops, json encoder error:")
             print(err.msg)
             print(err.lineno, err.colno)
-        input(">>> Press Enter to continue...")
+        input(">>> Press any key to continue...")
         menu()
 
 def deleteQuestion():
     # diplay tabled list of questions & corresponding answers of loaded topic list
+    idOptions = list()
     print('ID - QUESTION : ANSWER')
     print('-'.center(25, '-'))
     for i,line in enumerate(cards, start=1):
         print(i, "-",line[0],':',line[1])
+        idOptions.append(str(i))
     print('-'.center(25, '-'))
     # prompt user to select id of question & corresponding answer to delete
     print('>>> Enter ID to delete (q to quit):')
     response = input().strip()
     if response == 'q':
         menu()
-    else:
+    elif response in idOptions:
         for i,line in enumerate(cards, start=1):
             if i == int(response):
                 cards.remove(line)
                 saveFile()
                 print("\n")
                 print(line, ' has been removed from the list!\n')
-                input(">>> Press Enter to continue...")
-                menu()
-            # TODO: option when id response not in list.   
+                print("--> Would you like to delete another question?")
+                response = input().strip()
+                if response == 'yes' or response == 'y':
+                    deleteQuestion()
+                else:
+                    input(">>> Press any key to continue...")
+                    menu()  
+    else:
+        print("Please only type one of the available id options (or q to exit)!\n")
+        deleteQuestion()
 
 
 def viewQuestionList():
