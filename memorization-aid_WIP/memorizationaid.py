@@ -7,7 +7,8 @@
 #   permission of Santiago Norena
 #
 #   Version Control:
-#   9-19-2019 - Release of Memorization Aid (Version 01)
+#   9-19-2019 - Release of Memorization Aid (Version 1)
+#   5-10-2020 - Release of Memorization Aid (Version 2)
 #  *******************************************************
 #---------------------------NOTES:-------------------------------------
 # - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
