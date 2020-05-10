@@ -11,7 +11,7 @@
 #   5-10-2020 - Release of Memorization Aid (Version 2)
 #  *******************************************************
 #---------------------------NOTES:-------------------------------------
-# - NOTE: sonsole-menu library (https://pypi.org/project/console-menu/)
+# - NOTE: 
 # - 
 #---------------------------BACKLOG:------------------------------------
 # - TODO: Add timer for practice sessions
