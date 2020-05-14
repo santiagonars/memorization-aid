@@ -37,9 +37,9 @@ def menu():
     print('-'.center(width, '-'))
     print('-------(1) Start a practice session')
     print('-------(2) Add a new question')
-    print('-------(3) Create a new topic list')
-    print('-------(4) Delete questions')
-    print('-------(5) View list of questions')
+    print('-------(3) Delete questions')
+    print('-------(4) View list of questions')
+    print('-------(5) Create a new topic list')
     print('-------(6) Exit')
     menuResponse()
 
@@ -55,13 +55,13 @@ def menuResponse():
         loadFile()
         saveQuestion()
     elif option == '3':
-        createNewTopicList()
-    elif option == '4':
         loadFile()
         deleteQuestion()
-    elif option == '5':
+    elif option == '4':
         loadFile()
         viewQuestionList()
+    elif option == '5':
+        createNewTopicList()
     elif option == '6':
         exit
     else:
