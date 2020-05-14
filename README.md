@@ -21,4 +21,4 @@ Version Control:
 
 9-19-2019 | Release of Memorization Aid (Version 1.0) - *GUI runs on command line
 
-5-10-2019 | Release of Memorization Aid (Version 2.0) - *GUI runs on command line
+5-14-2019 | Release of Memorization Aid (Version 2.0) - *GUI runs on command line
