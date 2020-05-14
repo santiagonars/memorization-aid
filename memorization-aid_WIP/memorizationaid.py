@@ -8,7 +8,7 @@
 #
 #   Version Control:
 #   9-19-2019 - Release of Memorization Aid (Version 1)
-#   5-10-2020 - Release of Memorization Aid (Version 2)
+#   5-14-2020 - Release of Memorization Aid (Version 2)
 #  *******************************************************
 #---------------------------NOTES:-------------------------------------
 # - NOTE: 
@@ -180,9 +180,9 @@ def saveFile():
     # n represent name of file currently been used for cards array
     n = tname[0]
     dictData = dict(cards)
-
+    # try serializing python object to json as external file
     try:
-        json.dump(dictData, open(n,"w"))    
+        json.dump(dictData, open(n,"w"), indent=4)    
     except JSONDecodeError as err:
         print("Whoops, json encoder error:")
         print(err.msg)
@@ -253,9 +253,9 @@ def deleteQuestion():
                 saveFile()
                 print("\n")
                 print(line, ' has been removed from the list!\n')
-                print("--> Would you like to delete another question?")
-                response = input().strip()
-                if response == 'yes' or response == 'y':
+                print("--> Would you like to delete another question? (Enter yes or y)")
+                response2 = input().strip()
+                if response2 == 'yes' or response2 == 'y':
                     deleteQuestion()
                 else:
                     input(">>> Press any key to continue...")
