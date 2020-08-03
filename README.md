@@ -8,7 +8,7 @@ Tool application to help practice learning and memorizing new topics of interest
 
 #### Memorizarion Aid (VERSION 1)
 
-![use case diagram](support/Version-1/memorizationGIF_Aug-02-2020.gif)
+![CLI Version](support/Version-1/memorizationGIF_Aug-02-2020.gif)
 
 ---------------------------------------------------------------------------------------------------------------------------------
 => This repository contains multiple version.
@@ -24,6 +24,6 @@ Version Control:
 
 ---DATE--------------NOTES--------------------------
 
-9-19-2019 | Release of Memorization Aid (Version 1.0) - *GUI runs on command line | uses .txt files as data store
+9-19-2019 | Release of Memorization Aid (Version 1.0) - *GUI runs on command line interface | uses .txt files as data store
 
-5-14-2019 | Release of Memorization Aid (Version 2.0) - *GUI runs on command line | uses .json files as data store
+5-14-2019 | Release of Memorization Aid (Version 2.0) - *GUI runs on command line interface | update to use .json files as data store
