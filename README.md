@@ -4,7 +4,7 @@
 
 Author: Santiago Norena
 
-Tool application to help practice learning and memorizing new topics of interest.
+Use case: Tool application to help practice learning and memorizing new topics of interest.
 
 #### Memorizarion Aid (VERSION 1)
 
@@ -14,7 +14,7 @@ Tool application to help practice learning and memorizing new topics of interest
 
 => Each version has a python (.py) file and any addition text (.txt) or json (.json) data format files.
 
-Requirements:
+###Requirements:
 - Python 3.7
 
 ---------------------------------------------------------------------------------------------------------------------------------
