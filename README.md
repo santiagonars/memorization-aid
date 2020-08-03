@@ -14,7 +14,7 @@ Use case: Tool application to help practice learning and memorizing new topics o
 
 => Each version has a python (.py) file and any addition text (.txt) or json (.json) data format files.
 
-###Requirements:
+### Requirements:
 - Python 3.7
 
 ---------------------------------------------------------------------------------------------------------------------------------
