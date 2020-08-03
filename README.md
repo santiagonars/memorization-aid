@@ -10,7 +10,6 @@ Tool application to help practice learning and memorizing new topics of interest
 
 ![CLI Version](support/Version-1/memorizationGIF_Aug-02-2020.gif)
 
----------------------------------------------------------------------------------------------------------------------------------
 => This repository contains multiple version.
 
 => Each version has a python (.py) file and any addition text (.txt) or json (.json) data format files.
@@ -19,7 +18,6 @@ Requirements:
 - Python 3.7
 
 ---------------------------------------------------------------------------------------------------------------------------------
-
 Version Control:
 
 ---DATE--------------NOTES--------------------------
