@@ -12,8 +12,8 @@ Tool application to help practice learning and memorizing new topics of interest
 
 ---------------------------------------------------------------------------------------------------------------------------------
 => This repository contains multiple version.
-=> Each version has a python (.py) file and any addition text (.txt) or json (.json) data format files.
 
+=> Each version has a python (.py) file and any addition text (.txt) or json (.json) data format files.
 
 Requirements:
 - Python 3.7
