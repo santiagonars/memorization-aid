@@ -24,4 +24,4 @@ Version Control:
 
 9-19-2019 | Release of Memorization Aid (Version 1.0) - *GUI runs on command line interface | uses .txt files as data store
 
-5-14-2019 | Release of Memorization Aid (Version 2.0) - *GUI runs on command line interface | update to use .json files as data store
+5-14-2020 | Release of Memorization Aid (Version 2.0) - *GUI runs on command line interface | update to use .json files as data store
