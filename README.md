@@ -6,7 +6,7 @@ Author: Santiago Norena
 
 Use case: Tool application to help practice learning and memorizing new topics of interest.
 
-#### Memorizarion Aid (VERSION 1)
+#### Memorizarion Aid (VERSION 2)
 
 ![CLI Version](support/Version-1/memorizationGIF_Aug-02-2020.gif)
 
