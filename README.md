@@ -8,7 +8,7 @@ Use case: Tool application to help practice learning and memorizing new topics o
 
 #### Memorizarion Aid (VERSION 2)
 
-![CLI Version](support/Version-1/memorizationGIF_Aug-02-2020.gif)
+![CLI Version](support/Version-2/memorizationGIF_Aug-02-2020.gif)
 
 => This repository contains multiple version.
 
